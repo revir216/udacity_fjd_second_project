@@ -26,8 +26,12 @@ beforeAll(async () => {
       category: "Book",
     };
     const sampleOrders: Orders = {
-      productId: 1,
-      quantity: 2,
+      details: [
+        {
+          productId: 1,
+          quantity: 5,
+        },
+      ],
       userId: 1,
       status: "sold",
     };
@@ -161,8 +165,12 @@ describe("REST API Test", (): void => {
 
     it("Test POST v1/api/order response with status 200", async () => {
       const order: Orders = {
-        productId: 1,
-        quantity: 4,
+        details: [
+          {
+            productId: 1,
+            quantity: 7,
+          },
+        ],
         userId: 1,
         status: "sold",
       };
@@ -177,9 +185,6 @@ describe("REST API Test", (): void => {
     it("Test PUT v1/api/order response with status 200", async () => {
       const order: Orders = {
         id: 2,
-        productId: 1,
-        quantity: 6,
-        userId: 1,
         status: "pending",
       };
       const response = await request

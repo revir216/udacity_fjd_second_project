@@ -22,8 +22,7 @@ const show = async (_req: Request, res: Response) => {
 const create = async (_req: Request, res: Response) => {
   try {
     const order: Orders = {
-      productId: _req.body.productId,
-      quantity: _req.body.productId,
+      details: _req.body.details,
       userId: _req.body.userId,
       status: _req.body.status,
     };
@@ -36,14 +35,13 @@ const update = async (_req: Request, res: Response) => {
   try {
     const order: Orders = {
       id: _req.body.id,
-      productId: _req.body.productId,
-      quantity: _req.body.productId,
-      userId: _req.body.userId,
       status: _req.body.status,
     };
     const result = await oderService.update(order);
     res.status(200).json(result);
-  } catch (err) {}
+  } catch (err) {
+    res.status(400).json(err);
+  }
 };
 
 const destroy = async (_req: Request, res: Response) => {

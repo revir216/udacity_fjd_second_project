@@ -1,5 +1,23 @@
 # Storefront Backend Project
 
+## ENV SETUP:
+
+POSTGRES_HOST=127.0.0.1
+POSTGRES_DB=project2
+POSTGRES_TEST_DB=project2_test
+POSTGRES_USER=admin
+POSTGRES_PASSWORD=admin123
+ENV=test
+BCRYPT_PASSWORD=$SFs3c3dd3ta_fkj
+SALT_ROUNDS=10
+TOKEN_SECRET=FAJ8443*&$jjh2HKJ&&3BBBFKjsgJHdk
+
+## Database Set Up
+
+CREATE USER full_stack_user WITH PASSWORD 'Pass1234'
+GRANT ALL PRIVILEGES ON DATABASE project2 TO full_stack_user
+GRANT ALL PRIVILEGES ON DATABASE project2_test TO full_stack_user
+
 ## Getting Started
 
 Repo : https://github.com/revir216/udacity_fjd_second_project.git
@@ -43,7 +61,7 @@ tables to store a single shape.
 
 ### 2. DB Creation and Migrations
 
-Now that you have the structure of the databse outlined, it is time to create the database and migrations. Add the npm
+Now that you have the structure of the database outlined, it is time to create the database and migrations. Add the npm
 packages dotenv and db-migrate that we used in the course and setup your Postgres database. If you get stuck, you can
 always revisit the database lesson for a reminder.
 
@@ -72,3 +90,5 @@ instructions for setting up and running your project including how you setup, ru
 
 Before submitting your project, spin it up and test each endpoint. If each one responds with data that matches the data
 shapes from the `REQUIREMENTS.md`, it is ready for submission!
+
+

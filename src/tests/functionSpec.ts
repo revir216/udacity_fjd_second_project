@@ -206,8 +206,12 @@ describe("FUNCTIONAL Test", (): void => {
       expect(result).toEqual([
         {
           id: 1,
-          productId: 1,
-          quantity: 2,
+          details: [
+            {
+              productId: 1,
+              quantity: 5,
+            },
+          ],
           userId: 1,
           status: "sold",
         },
@@ -216,15 +220,23 @@ describe("FUNCTIONAL Test", (): void => {
 
     it("create method should add a order", async () => {
       const result: Orders = await orderServices.create({
-        productId: 1,
-        quantity: 3,
+        details: [
+          {
+            productId: 1,
+            quantity: 7,
+          },
+        ],
         userId: 1,
         status: "sold",
       });
       expect(result).toEqual({
         id: 3,
-        productId: 1,
-        quantity: 3,
+        details: [
+          {
+            productId: 1,
+            quantity: 7,
+          },
+        ],
         userId: 1,
         status: "sold",
       });
@@ -233,30 +245,48 @@ describe("FUNCTIONAL Test", (): void => {
     it("update method should update an order", async () => {
       const result: Orders = await orderServices.update({
         id: 3,
-        productId: 1,
-        quantity: 15,
-        userId: 1,
-        status: "sold",
+        status: "complete",
       });
 
       expect(result).toEqual({
         id: 3,
-        productId: 1,
-        quantity: 15,
+        details: [
+          {
+            productId: 1,
+            quantity: 7,
+          },
+        ],
         userId: 1,
-        status: "sold",
+        status: "complete",
       });
     });
 
     it("show method should return the correct order", async () => {
       const result = await orderServices.show(1);
-      expect(result).toEqual({
-        id: 1,
-        productId: 1,
-        quantity: 2,
-        userId: 1,
-        status: "sold",
-      });
+      expect(result).toEqual([
+        {
+          id: 1,
+          details: [
+            {
+              productId: 1,
+              quantity: 5,
+            },
+          ],
+          userId: 1,
+          status: "sold",
+        },
+        {
+          id: 3,
+          details: [
+            {
+              productId: 1,
+              quantity: 7,
+            },
+          ],
+          userId: 1,
+          status: "complete",
+        },
+      ]);
     });
 
     it("delete method should remove the order", async () => {
@@ -265,8 +295,12 @@ describe("FUNCTIONAL Test", (): void => {
       expect(result).toEqual([
         {
           id: 1,
-          productId: 1,
-          quantity: 2,
+          details: [
+            {
+              productId: 1,
+              quantity: 5,
+            },
+          ],
           userId: 1,
           status: "sold",
         },

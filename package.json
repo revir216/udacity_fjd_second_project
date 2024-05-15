@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon src/appStartup.ts",
     "watch": "tsc-watch --esModuleInterop src/server.ts --outDir ./dist --onSuccess \"node ./dist/appStartup.js\"",
-    "test": "ENV=test && rm -rf dist/ && npx tsc && db-migrate up --env test&& jasmine && db-migrate db:drop test",
+    "test": "ENV=test && rm -rf dist/ && npx tsc && db-migrate down --env test && db-migrate up --env test && jasmine && db-migrate db:drop test",
     "tsc": "tsc"
   },
   "author": "Udacity",
